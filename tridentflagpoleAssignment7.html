@@ -1,0 +1,107 @@
+<script>
+
+var poleType, numFeet, poleRate, totalAmount;
+
+//Assumptions:
+//constants
+var woodRate = 10;
+var aluminumRate = 15;
+var steelRate = 25;
+
+//initializing the variables
+//counters and accumulators
+var custCount = 0;
+var woodCount= 0;
+var aluminumCount = 0;
+var steelCount = 0;
+var woodAccum = 0;
+var aluminumAccum = 0;
+var steelAccum = 0;
+//math results to avoid NaN if no tickets are ordered
+var woodSales = 0;
+var aluminumSales = 0;
+var steelSales = 0;
+
+//errorFkag and loop initialization
+var errorFlag = 0;
+var anotherPurchase = "yes";
+
+while (anotherPurchase == "yes")
+{
+  //Inputs:
+   poleType = prompt("What type of pole material: wood, aluminum, or steel.", "");
+   numFeet = prompt("How many feet?", "");
+   
+   //conversion from text to binary
+   numFeet = parseInt(numFeet);
+
+   //Calculations:
+   switch(poleType)
+   {//start switch
+   case "wood":
+	 		woodCount = woodCount + 1;
+      poleRate = woodRate;
+      woodAccum = woodAccum + numFeet;
+      //woodSales = woodAccum * woodRate; 
+      //alert("Number of feet:  " + woodAccum);
+      //alert("Amount of money collected for wood poles:  $" + woodSales.toFixed(2));
+   break;
+   
+   case "aluminum":
+	 		aluminumCount = aluminumCount + 1;
+      poleRate = aluminumRate;
+      aluminumAccum = aluminumAccum + numFeet;
+     // aluminumSales = aluminumAccum * aluminumRate;
+     // alert("Number of feet of aluminum poles:  " + aluminumAccum);
+     // alert("Amount of money collected for aluminum poles:  $" + aluminumSales.toFixed(2));
+   break;
+   
+   case "steel":
+	 		steelCount = steelCount + 1;
+      poleRate = steelRate;
+      steelAccum = steelAccum + numFeet;
+     // steelSales = steelAccum * steelRate;
+     // alert("Number of feet of steel poles:  " + steelAccum);
+     // alert("Amount of money collected for steel poles:  $" + steelSales.toFixed(2));
+   break;
+   
+   default:
+      alert("You typed " + poleType + " you needed to type: wood, aluminum, or steel.");
+      errorFlag = 1;
+   break;
+   }//end switch
+ poleCost = poleRate * numFeet
+ if (errorFlag == 0)
+ {//start no errors
+    custCount = custCount + 1
+    
+    alert("Pole cost: $" + poleCost.toFixed(2));
+   // alert("Number of customers:  " + custCount);
+ anotherPurchase = prompt("Is there another flag pole purchase?", "");	 
+ }//end no errors
+ else
+ {//start errors
+    errorFlag = 0;
+ }//end errors
+}//end while
+
+woodSales = woodAccum * woodRate;
+aluminumSales = aluminumAccum * aluminumRate;
+steelSales = steelAccum * steelRate;
+
+totalAmount = woodSales + aluminumSales + steelSales;
+
+
+//output
+document.write("Number of customers: " + custCount);
+document.write("<br>Number of wood poles sold: " + woodCount);
+document.write("<br>Number of feet of wood poles: " + woodAccum);
+document.write("<br>Amount of money collected for wood poles: $" + woodSales.toFixed(2));
+document.write("<br>Number of aluminum poles sold: " + aluminumCount);
+document.write("<br>Number of feet of aluminum poles: " + aluminumAccum);
+document.write("<br>Amount of money collected for aluminum poles: $" + aluminumSales.toFixed(2));
+document.write("<br>Number of steel poles sold: " + steelCount);
+document.write("<br>Number of feet of steel poles: " + steelAccum);
+document.write("<br>Amount of money collected for steel poles: $" + steelSales.toFixed(2));
+document.write("<br>Total amount of money collected: $" + totalAmount.toFixed(2));		
+</script>
